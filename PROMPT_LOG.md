@@ -48,3 +48,12 @@ Added an accessible responsive navigation system with a sticky navbar, mobile ha
 
 ### Achieved
 Created a dynamic menu section powered by a JavaScript array of eight flavor objects, rendered the menu cards into the page with DOM manipulation, and styled the menu with a responsive CSS Grid layout and hover animations.
+
+## 2026-05-08 21:48 UTC
+
+### Prompt
+> Add category filtering functionality to the menu section. Have categories like Classic, Fruit, Chocolate, and Seasonal, dynamically generated filter buttons, clicking a button updates menu items without reloading the page, use JavaScript array filtering methods, visually highlight the active filter button, add comments explaining the filtering logic and make sure to update PROMPT_LOG.md
+> update FEATURES.md
+
+### Achieved
+Added dynamic category filters for the menu using generated buttons, JavaScript array filtering, in-place DOM updates without page reloads, active filter highlighting, and inline comments explaining the filtering logic.
