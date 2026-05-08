@@ -74,3 +74,11 @@ Built a reservation form with all requested fields, responsive Flexbox styling, 
 
 ### Achieved
 Added a playful testimonials carousel with six customer reviews, JavaScript-generated slides and dots, previous/next controls, automatic sliding, smooth CSS transitions, and responsive mobile styling.
+
+## 2026-05-08 21:58 UTC
+
+### Prompt
+> I want to continue building the Nina’s Ice Cream website incrementally. Add a dark mode feature to the ice cream website. Include a dark mode toggle button in the navigation bar, CSS variables for theme switching, save theme preference using localStorage, smooth transitions between themes, ensure readability across all sections, add comments explaining the localStorage logic
+
+### Achieved
+Added a navigation dark mode toggle with CSS variable-based theme switching, readable dark styling across sections, smooth theme transitions, and localStorage persistence with comments explaining how the saved preference is read and written.

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navigation = document.querySelector(".site-navigation");
   const menuToggle = document.querySelector(".menu-toggle");
+  const themeToggle = document.querySelector(".theme-toggle");
   const navLinks = document.querySelectorAll(".nav-link");
   const menuFilters = document.querySelector("#menu-filters");
   const menuGrid = document.querySelector("#menu-grid");
@@ -107,6 +108,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentTestimonialIndex = 0;
   let testimonialIntervalId;
+  const themeStorageKey = "ninas-ice-cream-theme";
+
+  const getStoredTheme = () => {
+    try {
+      // localStorage keeps the visitor's theme choice after the page is closed,
+      // so returning guests see the same light or dark theme they selected.
+      return localStorage.getItem(themeStorageKey);
+    } catch (error) {
+      console.log("Theme preference could not be read from localStorage.", error);
+      return null;
+    }
+  };
+
+  const saveThemePreference = (theme) => {
+    try {
+      // Save only the current theme string; the rest of the UI reads it on load
+      // and applies the matching data-theme attribute to the document.
+      localStorage.setItem(themeStorageKey, theme);
+    } catch (error) {
+      console.log("Theme preference could not be saved to localStorage.", error);
+    }
+  };
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+
+    document.documentElement.dataset.theme = theme;
+
+    if (themeToggle) {
+      const themeIcon = themeToggle.querySelector(".theme-toggle-icon");
+      const themeText = themeToggle.querySelector(".theme-toggle-text");
+
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+
+      if (themeIcon) {
+        themeIcon.textContent = isDark ? "Sun" : "Moon";
+      }
+
+      if (themeText) {
+        themeText.textContent = isDark ? "Light" : "Dark";
+      }
+    }
+  };
+
+  applyTheme(getStoredTheme() || "light");
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+
+      applyTheme(nextTheme);
+      saveThemePreference(nextTheme);
+    });
+  }
 
   const getFilteredMenuItems = (category) => {
     // The "All" filter shows the complete array; category buttons use Array.filter()
