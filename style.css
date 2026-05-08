@@ -424,6 +424,84 @@ footer p {
   background: rgba(189, 231, 242, 0.5);
 }
 
+.reservation-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.form-field {
+  display: flex;
+  flex: 1 1 16rem;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-weight: 800;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  color: var(--color-chocolate);
+  font: inherit;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(248, 183, 200, 0.45);
+  border-radius: 18px;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.form-field input:focus {
+  background: var(--color-white);
+  border-color: var(--color-blue-deep);
+  box-shadow: 0 0 0 4px rgba(189, 231, 242, 0.38);
+}
+
+.form-field input.is-invalid {
+  border-color: var(--color-pink-deep);
+  box-shadow: 0 0 0 4px rgba(233, 120, 156, 0.16);
+}
+
+.error-message {
+  min-height: 1.25rem;
+  color: var(--color-pink-deep);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.reservation-submit {
+  align-self: flex-end;
+  min-height: 3rem;
+  padding: 0.85rem 1.25rem;
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 800;
+  background: var(--color-pink-deep);
+  border: 0;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  box-shadow: 0 16px 30px rgba(233, 120, 156, 0.24);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.reservation-submit:hover,
+.reservation-submit:focus-visible {
+  background: var(--color-blue-deep);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.form-message {
+  margin-top: 1.5rem;
+  color: var(--color-blue-deep);
+  font-weight: 800;
+}
+
 footer {
   padding: 3rem 2rem;
   margin-bottom: 2rem;
@@ -517,6 +595,14 @@ footer address {
 
   .filter-button {
     width: 100%;
+  }
+
+  .reservation-form {
+    flex-direction: column;
+  }
+
+  .reservation-submit {
+    align-self: stretch;
   }
 
   #featured-flavors article,

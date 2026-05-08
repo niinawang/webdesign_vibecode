@@ -57,7 +57,47 @@
 
     <section id="reservations" aria-labelledby="reservations-heading">
       <h2 id="reservations-heading">Reservations</h2>
-      <p>Reservation details will be added in a future update.</p>
+      <p class="section-intro">Save a table for scoops, sundaes, and sweet celebrations at Nina's Ice Cream.</p>
+      <form id="reservation-form" class="reservation-form" novalidate>
+        <div class="form-field">
+          <label for="reservation-name">Name</label>
+          <input type="text" id="reservation-name" name="name" autocomplete="name" aria-describedby="reservation-name-error" required>
+          <span id="reservation-name-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="reservation-email">Email</label>
+          <input type="email" id="reservation-email" name="email" autocomplete="email" aria-describedby="reservation-email-error" required>
+          <span id="reservation-email-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="reservation-phone">Phone Number</label>
+          <input type="tel" id="reservation-phone" name="phone" autocomplete="tel" aria-describedby="reservation-phone-error" required>
+          <span id="reservation-phone-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="reservation-date">Reservation Date</label>
+          <input type="date" id="reservation-date" name="date" aria-describedby="reservation-date-error" required>
+          <span id="reservation-date-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="reservation-time">Time</label>
+          <input type="time" id="reservation-time" name="time" aria-describedby="reservation-time-error" required>
+          <span id="reservation-time-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="reservation-party-size">Party Size</label>
+          <input type="number" id="reservation-party-size" name="partySize" min="1" max="12" aria-describedby="reservation-party-size-error" required>
+          <span id="reservation-party-size-error" class="error-message" role="alert"></span>
+        </div>
+
+        <button class="reservation-submit" type="submit">Reserve a Table</button>
+      </form>
+      <p id="reservation-confirmation" class="form-message" role="status" aria-live="polite"></p>
     </section>
   </main>
 

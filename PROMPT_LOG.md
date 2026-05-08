@@ -57,3 +57,12 @@ Created a dynamic menu section powered by a JavaScript array of eight flavor obj
 
 ### Achieved
 Added dynamic category filters for the menu using generated buttons, JavaScript array filtering, in-place DOM updates without page reloads, active filter highlighting, and inline comments explaining the filtering logic.
+
+## 2026-05-08 21:51 UTC
+
+### Prompt
+> Create a reservation form with: name field, email field, phone number field
+> reservation date field, time field, party size field. Also include: JavaScript form validation, error messages displayed below invalid inputs, successful submission confirmation without page refresh, Flexbox layout styling, event listeners for validation, console logs for debugging submissions
+
+### Achieved
+Built a reservation form with all requested fields, responsive Flexbox styling, JavaScript validation with per-field error messages, blur/input/submit event listeners, console debugging logs, and a no-refresh success confirmation.

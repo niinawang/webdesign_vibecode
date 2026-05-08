@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
   const menuFilters = document.querySelector("#menu-filters");
   const menuGrid = document.querySelector("#menu-grid");
+  const reservationForm = document.querySelector("#reservation-form");
+  const reservationConfirmation = document.querySelector("#reservation-confirmation");
   const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
 
   const menuItems = [
@@ -158,6 +160,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderFilterButtons();
   renderMenuItems();
+
+  const reservationFields = reservationForm
+    ? Array.from(reservationForm.querySelectorAll("input"))
+    : [];
+
+  const today = new Date();
+  const todayValue = today.toISOString().split("T")[0];
+  const dateField = reservationForm?.querySelector("#reservation-date");
+
+  if (dateField) {
+    dateField.min = todayValue;
+  }
+
+  const validationMessages = {
+    name: "Please enter your name.",
+    email: "Please enter a valid email address.",
+    phone: "Please enter a valid phone number.",
+    date: "Please choose today or a future reservation date.",
+    time: "Please choose a reservation time.",
+    partySize: "Please enter a party size between 1 and 12.",
+  };
+
+  const setFieldError = (field, message) => {
+    const errorElement = document.querySelector(`#${field.id}-error`);
+
+    field.classList.toggle("is-invalid", Boolean(message));
+    field.setAttribute("aria-invalid", String(Boolean(message)));
+
+    if (errorElement) {
+      errorElement.textContent = message;
+    }
+  };
+
+  const validateField = (field) => {
+    const value = field.value.trim();
+    let errorMessage = "";
+
+    if (!value) {
+      errorMessage = validationMessages[field.name];
+    } else if (field.name === "email" && !field.validity.valid) {
+      errorMessage = validationMessages.email;
+    } else if (field.name === "phone" && (!/^[\d\s()+.-]+$/.test(value) || value.replace(/\D/g, "").length < 7)) {
+      errorMessage = validationMessages.phone;
+    } else if (field.name === "date" && value < todayValue) {
+      errorMessage = validationMessages.date;
+    } else if (field.name === "partySize") {
+      const partySize = Number(value);
+
+      if (!Number.isInteger(partySize) || partySize < 1 || partySize > 12) {
+        errorMessage = validationMessages.partySize;
+      }
+    }
+
+    setFieldError(field, errorMessage);
+
+    return !errorMessage;
+  };
+
+  const validateReservationForm = () => {
+    const validationResults = reservationFields.map((field) => validateField(field));
+
+    return validationResults.every(Boolean);
+  };
+
+  const clearReservationForm = () => {
+    reservationFields.forEach((field) => setFieldError(field, ""));
+  };
+
+  if (reservationForm && reservationConfirmation) {
+    reservationFields.forEach((field) => {
+      field.addEventListener("blur", () => {
+        console.log("Reservation field blur validation triggered.", { field: field.name });
+        validateField(field);
+      });
+
+      field.addEventListener("input", () => {
+        reservationConfirmation.textContent = "";
+
+        if (field.classList.contains("is-invalid")) {
+          console.log("Reservation field input re-validation triggered.", { field: field.name });
+          validateField(field);
+        }
+      });
+    });
+
+    reservationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = Object.fromEntries(new FormData(reservationForm));
+      console.log("Reservation form submit event triggered.", formData);
+
+      if (!validateReservationForm()) {
+        reservationConfirmation.textContent = "";
+        console.log("Reservation form submission blocked by validation errors.", formData);
+        return;
+      }
+
+      reservationConfirmation.textContent = `Thanks, ${formData.name}! Your reservation request for ${formData.partySize} guest(s) on ${formData.date} at ${formData.time} has been received.`;
+      console.log("Reservation form submitted successfully.", formData);
+      reservationForm.reset();
+      clearReservationForm();
+    });
+  }
 
   if (!navigation || !menuToggle) {
     return;
