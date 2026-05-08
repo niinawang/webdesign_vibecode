@@ -219,6 +219,18 @@ main {
   overflow: hidden;
 }
 
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(2rem);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
 main > section,
 footer {
   width: min(100% - 2rem, var(--page-max-width));
@@ -414,7 +426,7 @@ footer p {
   border: 1px solid rgba(248, 183, 200, 0.42);
   border-radius: var(--border-radius-md);
   box-shadow: 0 14px 32px rgba(95, 63, 58, 0.1);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  transition: opacity 520ms ease, transform 520ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .menu-card:hover {
@@ -823,12 +835,21 @@ body,
 .form-field input,
 footer {
   transition:
+    opacity 520ms ease,
     background-color 260ms ease,
     background 260ms ease,
     color 260ms ease,
     border-color 260ms ease,
     box-shadow 260ms ease,
     transform 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 768px) {

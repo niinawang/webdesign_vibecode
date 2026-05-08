@@ -109,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentTestimonialIndex = 0;
   let testimonialIntervalId;
   const themeStorageKey = "ninas-ice-cream-theme";
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let scrollAnimationObserver;
 
   const getStoredTheme = () => {
     try {
@@ -164,6 +166,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const revealElement = (element) => {
+    element.classList.add("is-visible");
+  };
+
+  const observeScrollAnimations = (elements) => {
+    const animatedElements = Array.from(elements).filter((element) => !element.classList.contains("is-visible"));
+
+    if (animatedElements.length === 0) {
+      return;
+    }
+
+    if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+      animatedElements.forEach(revealElement);
+      return;
+    }
+
+    if (!scrollAnimationObserver) {
+      // The observer watches reveal elements until they enter the viewport,
+      // then reveals and unobserves them so each animation runs only once.
+      scrollAnimationObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          revealElement(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, {
+        // Start just before the element fully arrives for a smooth reveal while
+        // keeping a low threshold that performs well on mobile devices.
+        rootMargin: "0px 0px -64px 0px",
+        threshold: 0.12,
+      });
+    }
+
+    animatedElements.forEach((element) => scrollAnimationObserver.observe(element));
+  };
+
   const getFilteredMenuItems = (category) => {
     // The "All" filter shows the complete array; category buttons use Array.filter()
     // to return only the matching flavor cards without reloading the page.
@@ -188,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const createMenuCard = (item) => {
     const card = document.createElement("article");
-    card.className = "menu-card";
+    card.className = "menu-card reveal-on-scroll";
 
     const image = document.createElement("div");
     image.className = "menu-card-image";
@@ -229,6 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filteredItems.forEach((item) => menuFragment.append(createMenuCard(item)));
     menuGrid.replaceChildren(menuFragment);
+    observeScrollAnimations(menuGrid.querySelectorAll(".reveal-on-scroll"));
   };
 
   const renderFilterButtons = () => {
@@ -409,7 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slide.setAttribute("aria-hidden", String(index !== currentTestimonialIndex));
 
       const card = document.createElement("figure");
-      card.className = "testimonial-card";
+      card.className = "testimonial-card reveal-on-scroll";
 
       const quote = document.createElement("blockquote");
       quote.textContent = testimonial.quote;
@@ -444,6 +486,7 @@ document.addEventListener("DOMContentLoaded", () => {
     testimonialTrack.append(slidesFragment);
     testimonialDots.append(dotsFragment);
     updateTestimonialCarousel(currentTestimonialIndex);
+    observeScrollAnimations(testimonialTrack.querySelectorAll(".reveal-on-scroll"));
     startTestimonialAutoSlide();
   };
 
@@ -455,6 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderTestimonials();
+  observeScrollAnimations(document.querySelectorAll("#reservations.reveal-on-scroll, #testimonials.reveal-on-scroll"));
 
   if (!navigation || !menuToggle) {
     return;

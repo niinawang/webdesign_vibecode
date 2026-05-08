@@ -82,3 +82,11 @@ Added a playful testimonials carousel with six customer reviews, JavaScript-gene
 
 ### Achieved
 Added a navigation dark mode toggle with CSS variable-based theme switching, readable dark styling across sections, smooth theme transitions, and localStorage persistence with comments explaining how the saved preference is read and written.
+
+## 2026-05-08 22:02 UTC
+
+### Prompt
+> Add scroll-triggered animations using the Intersection Observer API. Create animate menu cards, testimonials, and reservation form sections, use fade-in and slide-up effects, animations should trigger only once, maintain smooth mobile performance, add comments explaining the observer logic
+
+### Achieved
+Added one-time scroll-triggered fade-in and slide-up animations using Intersection Observer for menu cards, testimonials, and reservation sections, with reduced-motion handling and comments explaining the observer behavior.
