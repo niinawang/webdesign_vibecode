@@ -605,4 +605,4 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMenu("desktop breakpoint reached");
     }
   });
-});
+}, { once: true });
