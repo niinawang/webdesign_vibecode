@@ -115,3 +115,11 @@ Added Jest test infrastructure and a jsdom-based unit test suite covering reserv
 
 ### Achieved
 Created a professional README with project overview, getting started instructions for opening `index.html`, optional test commands, a full feature list, tech stack, project file guide, and a summary of the playful ice cream shop vibe.
+
+## 2026-05-08 22:14 UTC
+
+### Prompt
+> How do I open the index.html on github?
+
+### Achieved
+Explained the difference between viewing `index.html` in the GitHub repository and publishing it as a live website with GitHub Pages.
