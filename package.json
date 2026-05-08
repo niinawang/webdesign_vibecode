@@ -1,0 +1,33 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Incremental Nina's Ice Cream website build.",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niinawang/webdesign_vibecode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niinawang/webdesign_vibecode/issues"
+  },
+  "homepage": "https://github.com/niinawang/webdesign_vibecode#readme",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    }
+  },
+  "devDependencies": {
+    "jest": "^30.4.1",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}
