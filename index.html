@@ -4,17 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   <title>Nina's Ice Cream</title>
 </head>
 <body>
   <header class="site-header">
     <nav class="site-navigation" aria-label="Primary navigation">
       <a href="#home" aria-label="Nina's Ice Cream home">Nina's Ice Cream</a>
-      <ul>
-        <li><a href="#featured-flavors">Featured Flavors</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#reservations">Reservations</a></li>
-        <li><a href="#footer">Visit Us</a></li>
+      <button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false" aria-label="Open navigation menu">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </button>
+      <ul id="primary-menu">
+        <li><a class="nav-link" href="#featured-flavors">Featured Flavors</a></li>
+        <li><a class="nav-link" href="#menu">Menu</a></li>
+        <li><a class="nav-link" href="#reservations">Reservations</a></li>
+        <li><a class="nav-link" href="#footer">Visit Us</a></li>
       </ul>
     </nav>
   </header>
