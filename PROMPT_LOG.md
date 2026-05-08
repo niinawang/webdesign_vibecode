@@ -66,3 +66,11 @@ Added dynamic category filters for the menu using generated buttons, JavaScript 
 
 ### Achieved
 Built a reservation form with all requested fields, responsive Flexbox styling, JavaScript validation with per-field error messages, blur/input/submit event listeners, console debugging logs, and a no-refresh success confirmation.
+
+## 2026-05-08 21:55 UTC
+
+### Prompt
+> Add a testimonials carousel using JavaScript. Include at least 6 customer testimonials, next and previous buttons, automatic sliding every few seconds, smooth CSS transition animations, responsive mobile layout, maintain the playful ice cream shop vibe.
+
+### Achieved
+Added a playful testimonials carousel with six customer reviews, JavaScript-generated slides and dots, previous/next controls, automatic sliding, smooth CSS transitions, and responsive mobile styling.

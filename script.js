@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuGrid = document.querySelector("#menu-grid");
   const reservationForm = document.querySelector("#reservation-form");
   const reservationConfirmation = document.querySelector("#reservation-confirmation");
+  const testimonialTrack = document.querySelector("#testimonial-track");
+  const testimonialDots = document.querySelector("#testimonial-dots");
+  const testimonialButtons = document.querySelectorAll("[data-carousel-direction]");
   const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
 
   const menuItems = [
@@ -68,6 +71,42 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const filterCategories = ["All", ...new Set(menuItems.map((item) => item.category))];
+
+  const testimonials = [
+    {
+      quote: "Nina's Strawberry Dream tastes like summer in a waffle cone. The whole shop feels cheerful and cozy.",
+      name: "Maya R.",
+      favorite: "Strawberry Dream",
+    },
+    {
+      quote: "The staff made my son's birthday scoop party feel extra special. Cookie Confetti was the star of the day.",
+      name: "Jordan P.",
+      favorite: "Cookie Confetti",
+    },
+    {
+      quote: "Chocolate Velvet is unbelievably smooth, and the pastel shop design makes every visit feel like a treat.",
+      name: "Elena S.",
+      favorite: "Chocolate Velvet",
+    },
+    {
+      quote: "I love that the flavors rotate but still feel familiar. Blueberry Cloud is my new weekend ritual.",
+      name: "Priya K.",
+      favorite: "Blueberry Cloud",
+    },
+    {
+      quote: "The reservation form made planning our sundae night simple, and the scoops were even better in person.",
+      name: "Theo M.",
+      favorite: "Caramel Waffle Crunch",
+    },
+    {
+      quote: "Mint Chip Meadow is refreshing, playful, and packed with chocolate. Nina's is our neighborhood happy place.",
+      name: "Camila D.",
+      favorite: "Mint Chip Meadow",
+    },
+  ];
+
+  let currentTestimonialIndex = 0;
+  let testimonialIntervalId;
 
   const getFilteredMenuItems = (category) => {
     // The "All" filter shows the complete array; category buttons use Array.filter()
@@ -263,6 +302,103 @@ document.addEventListener("DOMContentLoaded", () => {
       clearReservationForm();
     });
   }
+
+  const updateTestimonialCarousel = (nextIndex) => {
+    if (!testimonialTrack || !testimonialDots || testimonials.length === 0) {
+      return;
+    }
+
+    currentTestimonialIndex = (nextIndex + testimonials.length) % testimonials.length;
+    testimonialTrack.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
+
+    testimonialTrack.querySelectorAll(".testimonial-slide").forEach((slide, index) => {
+      slide.classList.toggle("is-active", index === currentTestimonialIndex);
+      slide.setAttribute("aria-hidden", String(index !== currentTestimonialIndex));
+    });
+
+    testimonialDots.querySelectorAll(".testimonial-dot").forEach((dot, index) => {
+      const isActive = index === currentTestimonialIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  };
+
+  const goToTestimonial = (direction) => {
+    const offset = direction === "previous" ? -1 : 1;
+    updateTestimonialCarousel(currentTestimonialIndex + offset);
+  };
+
+  const startTestimonialAutoSlide = () => {
+    testimonialIntervalId = window.setInterval(() => {
+      goToTestimonial("next");
+    }, 5000);
+  };
+
+  const resetTestimonialAutoSlide = () => {
+    window.clearInterval(testimonialIntervalId);
+    startTestimonialAutoSlide();
+  };
+
+  const renderTestimonials = () => {
+    if (!testimonialTrack || !testimonialDots) {
+      return;
+    }
+
+    const slidesFragment = document.createDocumentFragment();
+    const dotsFragment = document.createDocumentFragment();
+
+    testimonials.forEach((testimonial, index) => {
+      const slide = document.createElement("article");
+      slide.className = "testimonial-slide";
+      slide.setAttribute("aria-hidden", String(index !== currentTestimonialIndex));
+
+      const card = document.createElement("figure");
+      card.className = "testimonial-card";
+
+      const quote = document.createElement("blockquote");
+      quote.textContent = testimonial.quote;
+
+      const caption = document.createElement("figcaption");
+      const customerName = document.createElement("strong");
+      customerName.textContent = testimonial.name;
+
+      const favoriteScoop = document.createElement("span");
+      favoriteScoop.textContent = `Favorite scoop: ${testimonial.favorite}`;
+
+      caption.append(customerName, favoriteScoop);
+
+      card.append(quote, caption);
+      slide.append(card);
+      slidesFragment.append(slide);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "testimonial-dot";
+      dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
+      dot.setAttribute("aria-current", String(index === currentTestimonialIndex));
+
+      dot.addEventListener("click", () => {
+        updateTestimonialCarousel(index);
+        resetTestimonialAutoSlide();
+      });
+
+      dotsFragment.append(dot);
+    });
+
+    testimonialTrack.append(slidesFragment);
+    testimonialDots.append(dotsFragment);
+    updateTestimonialCarousel(currentTestimonialIndex);
+    startTestimonialAutoSlide();
+  };
+
+  testimonialButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      goToTestimonial(button.dataset.carouselDirection);
+      resetTestimonialAutoSlide();
+    });
+  });
+
+  renderTestimonials();
 
   if (!navigation || !menuToggle) {
     return;
