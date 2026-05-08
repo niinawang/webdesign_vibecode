@@ -107,3 +107,11 @@ Added a floating back-to-top button that appears after scrolling down, smoothly 
 
 ### Achieved
 Added Jest test infrastructure and a jsdom-based unit test suite covering reservation email validation, menu category filtering, dark mode localStorage persistence, back-to-top scroll visibility, and dynamic menu card rendering.
+
+## 2026-05-08 22:10 UTC
+
+### Prompt
+> Based on all our work today, generate a professional README.md. Include a 'Getting Started' section that explains how to open the index.html, a full feature list, and a summary of the project's 'vibe'.
+
+### Achieved
+Created a professional README with project overview, getting started instructions for opening `index.html`, optional test commands, a full feature list, tech stack, project file guide, and a summary of the playful ice cream shop vibe.
