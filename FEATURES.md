@@ -9,3 +9,8 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Menu placeholder: Reserves a semantic section where detailed menu content can be added later.
 - [x] Reservation placeholder: Reserves a semantic section where booking or event reservation content can be added later.
 - [x] Footer: Provides visit information, an address block, and copyright details.
+- [x] Pastel visual system: Defines reusable CSS variables for Nina's pink, cream, blue, chocolate, shadows, radii, fonts, and layout width.
+- [x] Cute sticky header styling: Keeps the navigation visible at the top with a soft cream backdrop, rounded brand mark, pastel hover states, and flexible link layout.
+- [x] Full-width hero styling: Uses a wide gradient background, centered content, oversized playful heading, and a rounded call-to-action button.
+- [x] Rounded card styling: Displays featured flavors as soft rounded cards with pastel gradients, shadows, and gentle lift-on-hover animation.
+- [x] Responsive styling: Reflows the header navigation and flavor cards for screens smaller than 768px while tightening spacing and border radii.
