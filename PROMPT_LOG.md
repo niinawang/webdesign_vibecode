@@ -164,3 +164,11 @@ Added a jQuery-powered live menu search input that filters existing dynamic menu
 
 ### Achieved
 Exposed a pure menu category filtering helper and added a readable Jest unit test using a mock menu array to verify that filtering returns only items matching the selected category.
+
+## 2026-05-08 22:36 UTC
+
+### Prompt
+> I noticed that the pistachio ice cream image in the dynamic menu is incorrect or not displaying properly on Nina’s Ice Cream website. Identify where the pistachio flavor image is defined in the JavaScript menu data or HTML, replace it with the correct image placeholder or correct image URL, ensure the pistachio item displays consistently with other menu items, verify that no other flavor images are broken as a result of the fix, maintain responsive layout and styling consistency
+
+### Achieved
+Located the Pistachio Petal image in the JavaScript menu data, replaced the incorrect image URL with a green ice cream photo, updated the alt text, and added test coverage to confirm the pistachio card renders the corrected image.

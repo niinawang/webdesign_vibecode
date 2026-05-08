@@ -28,3 +28,4 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] README refresh: Updates the documentation to include the latest realistic menu imagery, local and GitHub Pages viewing guidance, full feature coverage, and current project vibe.
 - [x] jQuery live menu search: Adds a search input that uses jQuery keyup handling and selectors to filter dynamic menu cards by flavor name, category, and description while working together with category filters and no-results messaging.
 - [x] Menu filter unit test: Adds a readable Jest unit test with a mock menu array to verify the category filtering helper returns only matching ice cream items.
+- [x] Pistachio image correction: Updates the dynamic Pistachio Petal menu card to use a consistent green ice cream photo with matching alt text and test coverage.

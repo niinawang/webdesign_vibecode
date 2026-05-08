@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Seasonal",
       description: "Roasted pistachio ice cream with a soft floral finish.",
       price: "$5.25",
-      imageUrl: "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=900&q=80",
-      imageAlt: "Pale green pistachio ice cream scoops.",
+      imageUrl: "https://images.unsplash.com/photo-1554630981-a73ffb5ed6f8?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Pale green pistachio ice cream in a cone.",
     },
   ];
 

@@ -145,6 +145,15 @@ describe("Nina's Ice Cream website interactions", () => {
     expect(document.querySelectorAll(".menu-card-image img")).toHaveLength(8);
   });
 
+  test("pistachio menu card uses the corrected ice cream image", () => {
+    const pistachioCard = Array.from(document.querySelectorAll(".menu-card"))
+      .find((card) => card.querySelector("h3").textContent === "Pistachio Petal");
+    const pistachioImage = pistachioCard.querySelector(".menu-card-image img");
+
+    expect(pistachioImage.src).toContain("photo-1554630981-a73ffb5ed6f8");
+    expect(pistachioImage.alt).toBe("Pale green pistachio ice cream in a cone.");
+  });
+
   test("jQuery search works with category filtering and no-results messaging", () => {
     const fruitButton = Array.from(document.querySelectorAll(".filter-button"))
       .find((button) => button.textContent === "Fruit");
