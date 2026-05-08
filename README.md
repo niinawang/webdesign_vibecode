@@ -1,12 +1,12 @@
-# Nina's Ice Cream
+# Nina's Ice Cream Website
 
-A playful, modern ice cream shop website built incrementally with semantic HTML, responsive CSS, and vanilla JavaScript interactions.
+A playful, modern ice cream shop website built with semantic HTML, responsive CSS, vanilla JavaScript, jQuery-enhanced menu search, and Jest interaction tests.
 
-Nina's Ice Cream is designed as a cheerful storefront experience: visitors can explore featured flavors, filter a dynamic menu, submit a reservation request, read customer testimonials, switch themes, and navigate comfortably across desktop and mobile screens.
+Nina's Ice Cream is a polished static storefront experience where visitors can explore featured flavors, browse a dynamic photo-rich menu, search and filter by category, submit a reservation request, read customer testimonials, switch between light and dark themes, and navigate comfortably across desktop and mobile screens.
 
 ## Getting Started
 
-This is a static website, so no build step is required to view the page.
+This project is a static website. You do not need a build step to view it in a browser.
 
 ### Open the website locally
 
@@ -15,6 +15,10 @@ This is a static website, so no build step is required to view the page.
 3. Open `index.html` directly in your browser.
 
 You can usually do this by double-clicking `index.html`, or by right-clicking the file and choosing your preferred browser.
+
+### Open from GitHub Pages
+
+If GitHub Pages is enabled for the repository, open the published Pages URL. GitHub will serve `index.html` automatically as the homepage.
 
 ### Optional: run tests
 
@@ -35,7 +39,10 @@ npm test
 - **Full-width hero section**: Presents the shop name, tagline, and menu call-to-action with centered, playful styling.
 - **Featured flavors section**: Highlights signature scoops in rounded cards with gentle hover lift effects.
 - **Dynamic menu rendering**: Stores menu items in a JavaScript array and renders flavor cards into the page with DOM manipulation.
+- **Realistic flavor photos**: Displays lazy-loaded ice cream images on every menu card with descriptive alt text and subtle hover zoom.
 - **Menu category filtering**: Generates filter buttons dynamically and uses JavaScript array filtering to show categories such as Classic, Fruit, Chocolate, and Seasonal.
+- **Live menu search**: Uses jQuery `keyup` handling and selectors to filter menu cards by flavor name, category, and description in real time.
+- **Combined menu filtering**: Search and category filters work together, with a friendly no-results message when no flavors match.
 - **Reservation form**: Collects name, email, phone number, reservation date, time, and party size.
 - **Form validation**: Shows inline error messages below invalid fields and displays a successful confirmation without refreshing the page.
 - **Testimonials carousel**: Renders six customer testimonials with previous/next controls, dot indicators, automatic sliding, and smooth transitions.
@@ -43,11 +50,11 @@ npm test
 - **Scroll-triggered animations**: Uses the Intersection Observer API to reveal menu cards, testimonials, and reservation content with one-time fade-in and slide-up animations.
 - **Back-to-top button**: Appears after scrolling down and smoothly returns visitors to the top of the page.
 - **Responsive design**: Adapts layouts, navigation, filters, cards, forms, carousel controls, and floating controls for screens below 768px.
-- **Interaction tests**: Includes Jest and jsdom tests for validation, filtering, theme persistence, scroll visibility, and dynamic rendering.
+- **Interaction tests**: Includes Jest and jsdom tests for validation, filtering, jQuery search, pistachio image rendering, theme persistence, scroll visibility, and dynamic rendering.
 
 ## Project Vibe
 
-The site is cute, bright, and approachable with a boutique ice cream parlor feel. Pastel pink, cream, and light blue create a soft dessert-inspired palette, while rounded cards, pill-shaped buttons, gentle hover states, and playful typography make the experience feel welcoming and modern.
+The site has a cheerful boutique ice cream parlor vibe: pastel, polished, friendly, and gently interactive. Pastel pink, cream, and light blue create a soft dessert-inspired palette, while realistic ice cream photos make the menu feel appetizing and tangible. Rounded cards, pill-shaped buttons, smooth motion, and playful typography keep the experience warm, modern, and easy to use.
 
 The overall vibe is:
 
@@ -55,6 +62,7 @@ The overall vibe is:
 - Modern but cozy
 - Family-friendly and neighborhood-focused
 - Soft, pastel, and dessert-inspired
+- Photo-forward and appetizing
 - Interactive without feeling overwhelming
 
 ## Tech Stack
@@ -62,6 +70,7 @@ The overall vibe is:
 - HTML5
 - CSS3
 - Vanilla JavaScript
+- jQuery
 - Jest
 - jsdom
 
@@ -69,7 +78,7 @@ The overall vibe is:
 
 - `index.html` - Main website structure.
 - `style.css` - Visual styling, responsive layout, animations, and theme support.
-- `script.js` - Dynamic rendering, navigation behavior, form validation, carousel, dark mode, scroll animations, and back-to-top logic.
+- `script.js` - Dynamic rendering, menu filtering/search, navigation behavior, form validation, carousel, dark mode, scroll animations, and back-to-top logic.
 - `tests/website.test.js` - Jest tests for key interactions.
 - `PROMPT_LOG.md` - Running log of prompts and completed work.
 - `FEATURES.md` - Checklist of completed website components.

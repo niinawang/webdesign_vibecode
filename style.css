@@ -372,6 +372,47 @@ footer p {
   font-size: 1.08rem;
 }
 
+.menu-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 34rem;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+}
+
+.menu-search label {
+  font-weight: 800;
+}
+
+.menu-search input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  color: var(--color-chocolate);
+  font: inherit;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(248, 183, 200, 0.5);
+  border-radius: var(--border-radius-pill);
+  outline: none;
+  box-shadow: 0 12px 28px rgba(95, 63, 58, 0.08);
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.menu-search input:focus {
+  background: var(--color-white);
+  border-color: var(--color-blue-deep);
+  box-shadow: 0 0 0 4px rgba(189, 231, 242, 0.38);
+}
+
+.menu-empty-message {
+  margin: 1.5rem auto 0;
+  color: var(--color-pink-deep);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
 .menu-filters {
   display: flex;
   flex-wrap: wrap;
@@ -429,6 +470,10 @@ footer p {
   transition: opacity 520ms ease, transform 520ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.menu-card.is-hidden {
+  display: none;
+}
+
 .menu-card:hover {
   border-color: rgba(233, 120, 156, 0.65);
   transform: translateY(-7px);
@@ -436,18 +481,24 @@ footer p {
 }
 
 .menu-card-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   min-height: 9rem;
-  color: var(--color-pink-deep);
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  overflow: hidden;
   background:
     radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.92), transparent 4rem),
     linear-gradient(135deg, rgba(248, 183, 200, 0.74), rgba(189, 231, 242, 0.76));
+}
+
+.menu-card-image img {
+  display: block;
+  width: 100%;
+  height: 11rem;
+  object-fit: cover;
+  transition: transform 240ms ease, filter 240ms ease;
+}
+
+.menu-card:hover .menu-card-image img {
+  transform: scale(1.05);
 }
 
 .menu-card-content {
@@ -816,6 +867,10 @@ html[data-theme="dark"] .menu-card-image {
     linear-gradient(135deg, rgba(255, 159, 189, 0.28), rgba(137, 216, 238, 0.24));
 }
 
+html[data-theme="dark"] .menu-card-image img {
+  filter: brightness(0.86) saturate(1.05);
+}
+
 html[data-theme="dark"] .menu-card-description,
 html[data-theme="dark"] .testimonial-card figcaption span {
   color: rgba(248, 237, 244, 0.76);
@@ -831,7 +886,18 @@ html[data-theme="dark"] .form-field input {
   border-color: rgba(255, 159, 189, 0.28);
 }
 
+html[data-theme="dark"] .menu-search input {
+  color: var(--color-chocolate);
+  background: rgba(43, 29, 58, 0.9);
+  border-color: rgba(255, 159, 189, 0.28);
+}
+
 html[data-theme="dark"] .form-field input:focus {
+  background: #2b1d3a;
+  border-color: var(--color-blue-deep);
+}
+
+html[data-theme="dark"] .menu-search input:focus {
   background: #2b1d3a;
   border-color: var(--color-blue-deep);
 }
@@ -976,6 +1042,10 @@ footer {
   .menu-filters {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .menu-search {
+    max-width: none;
   }
 
   .filter-button {

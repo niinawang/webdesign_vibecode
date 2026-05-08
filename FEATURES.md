@@ -24,3 +24,12 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Back-to-top button: Shows a floating button after the visitor scrolls down, then uses modular JavaScript and smooth scrolling to return to the top with responsive positioning and hover animation.
 - [x] Jest interaction tests: Adds a jsdom test suite for invalid email validation, menu filtering results, dark mode localStorage updates, back-to-top scroll visibility, and dynamic menu card rendering counts.
 - [x] Professional README: Documents the project overview, getting started steps, feature list, tech stack, file structure, tests, and playful ice cream shop vibe.
+- [x] Realistic menu images: Displays lazy-loaded realistic ice cream photos on every dynamic flavor card with descriptive alt text and subtle image hover scaling.
+- [x] README refresh: Updates the documentation to include the latest realistic menu imagery, local and GitHub Pages viewing guidance, full feature coverage, and current project vibe.
+- [x] jQuery live menu search: Adds a search input that uses jQuery keyup handling and selectors to filter dynamic menu cards by flavor name, category, and description while working together with category filters and no-results messaging.
+- [x] Menu filter unit test: Adds a readable Jest unit test with a mock menu array to verify the category filtering helper returns only matching ice cream items.
+- [x] Pistachio image correction: Updates the dynamic Pistachio Petal menu card to use a consistent green ice cream photo with matching alt text and test coverage.
+- [x] Pistachio image verification: Logs when the corrected Pistachio Petal image is rendered in the dynamic menu DOM and verifies the image remains covered by automated tests.
+- [x] Menu description Flexbox alignment: Centers the Menu description text through a dedicated parent Flexbox container for clearer layout hierarchy.
+- [x] Menu description removal: Removes the introductory Menu description text so the search controls appear directly beneath the Menu heading.
+- [x] Final README update: Refreshes the professional README with the latest jQuery search, image, testing, setup, feature, and vibe details.

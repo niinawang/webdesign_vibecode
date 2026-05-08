@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
   const menuFilters = document.querySelector("#menu-filters");
   const menuGrid = document.querySelector("#menu-grid");
+  const menuNoResults = document.querySelector("#menu-no-results");
   const reservationForm = document.querySelector("#reservation-form");
   const reservationConfirmation = document.querySelector("#reservation-confirmation");
   const testimonialTrack = document.querySelector("#testimonial-track");
@@ -19,56 +20,64 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Classic",
       description: "Creamy vanilla bean ice cream with fragrant specks in every scoop.",
       price: "$4.50",
-      imagePlaceholder: "VB",
+      imageUrl: "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Scoops of creamy vanilla ice cream in a bowl.",
     },
     {
       flavorName: "Strawberry Dream",
       category: "Fruit",
       description: "Sweet strawberry ice cream with ribbons of berry jam.",
       price: "$4.75",
-      imagePlaceholder: "ST",
+      imageUrl: "https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Pink strawberry ice cream scoops in a cone.",
     },
     {
       flavorName: "Chocolate Velvet",
       category: "Chocolate",
       description: "Deep cocoa ice cream with a silky, truffle-like finish.",
       price: "$4.95",
-      imagePlaceholder: "CV",
+      imageUrl: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Rich chocolate ice cream scoops with toppings.",
     },
     {
       flavorName: "Caramel Waffle Crunch",
       category: "Seasonal",
       description: "Buttery caramel ice cream folded with waffle cone pieces.",
       price: "$5.50",
-      imagePlaceholder: "CW",
+      imageUrl: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Ice cream cone with caramel-colored scoops.",
     },
     {
       flavorName: "Cookie Confetti",
       category: "Classic",
       description: "Cake batter ice cream with cookie crumbles and rainbow sprinkles.",
       price: "$5.50",
-      imagePlaceholder: "CC",
+      imageUrl: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Colorful ice cream scoops with sprinkles.",
     },
     {
       flavorName: "Blueberry Cloud",
       category: "Fruit",
       description: "Light blueberry ice cream swirled with fluffy marshmallow cream.",
       price: "$5.25",
-      imagePlaceholder: "BC",
+      imageUrl: "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Berry ice cream scoops served in a bowl.",
     },
     {
       flavorName: "Mint Chip Meadow",
       category: "Chocolate",
       description: "Cool mint ice cream dotted with crisp chocolate chips.",
       price: "$4.95",
-      imagePlaceholder: "MC",
+      imageUrl: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Mint-colored ice cream scoops with chocolate pieces.",
     },
     {
       flavorName: "Pistachio Petal",
       category: "Seasonal",
       description: "Roasted pistachio ice cream with a soft floral finish.",
       price: "$5.25",
-      imagePlaceholder: "PP",
+      imageUrl: "https://plus.unsplash.com/premium_photo-1694116056814-edddc837a61d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      imageAlt: "Pale green pistachio ice cream in a cone.",
     },
   ];
 
@@ -112,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeStorageKey = "ninas-ice-cream-theme";
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const backToTopOffset = 420;
+  let currentMenuCategory = "All";
+  let currentMenuSearchTerm = "";
   let scrollAnimationObserver;
 
   const getStoredTheme = () => {
@@ -234,14 +245,17 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener("click", scrollBackToTop);
   }
 
-  const getFilteredMenuItems = (category) => {
-    // The "All" filter shows the complete array; category buttons use Array.filter()
-    // to return only the matching flavor cards without reloading the page.
+  const filterMenuItemsByCategory = (items, category) => {
     if (category === "All") {
-      return menuItems;
+      return items;
     }
 
-    return menuItems.filter((item) => item.category === category);
+    return items.filter((item) => item.category === category);
+  };
+
+  window.NinasIceCream = {
+    ...(window.NinasIceCream || {}),
+    filterMenuItemsByCategory,
   };
 
   const updateActiveFilterButton = (selectedCategory) => {
@@ -259,11 +273,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const createMenuCard = (item) => {
     const card = document.createElement("article");
     card.className = "menu-card reveal-on-scroll";
+    card.dataset.flavorName = item.flavorName;
+    card.dataset.category = item.category;
+    card.dataset.description = item.description;
 
     const image = document.createElement("div");
     image.className = "menu-card-image";
-    image.setAttribute("aria-hidden", "true");
-    image.textContent = item.imagePlaceholder;
+    const flavorImage = document.createElement("img");
+    flavorImage.src = item.imageUrl;
+    flavorImage.alt = item.imageAlt;
+    flavorImage.loading = "lazy";
+
+    image.append(flavorImage);
 
     const content = document.createElement("div");
     content.className = "menu-card-content";
@@ -289,17 +310,67 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   };
 
-  const renderMenuItems = (category = "All") => {
+  const updateMenuNoResultsMessage = (visibleCount) => {
+    if (!menuNoResults) {
+      return;
+    }
+
+    menuNoResults.hidden = visibleCount > 0;
+  };
+
+  const applyMenuFilters = () => {
+    if (!window.jQuery || !menuGrid) {
+      return;
+    }
+
+    const $ = window.jQuery;
+    let visibleCount = 0;
+
+    // jQuery handles the live DOM filtering: every card is checked against the
+    // active category button and the current search term, then hidden or shown.
+    $(".menu-card").each(function filterCard() {
+      const $card = $(this);
+      const cardCategory = $card.data("category");
+      const searchableText = [
+        $card.data("flavorName"),
+        cardCategory,
+        $card.data("description"),
+      ].join(" ").toLowerCase();
+      const matchesCategory = currentMenuCategory === "All" || cardCategory === currentMenuCategory;
+      const matchesSearch = !currentMenuSearchTerm || searchableText.includes(currentMenuSearchTerm);
+      const isVisible = matchesCategory && matchesSearch;
+
+      $card.toggleClass("is-hidden", !isVisible);
+
+      if (isVisible) {
+        visibleCount += 1;
+      }
+    });
+
+    updateMenuNoResultsMessage(visibleCount);
+  };
+
+  const renderMenuItems = () => {
     if (!menuGrid) {
       return;
     }
 
     const menuFragment = document.createDocumentFragment();
-    const filteredItems = getFilteredMenuItems(category);
 
-    filteredItems.forEach((item) => menuFragment.append(createMenuCard(item)));
+    menuItems.forEach((item) => menuFragment.append(createMenuCard(item)));
     menuGrid.replaceChildren(menuFragment);
     observeScrollAnimations(menuGrid.querySelectorAll(".reveal-on-scroll"));
+    applyMenuFilters();
+
+    const pistachioImage = menuGrid
+      .querySelector('[data-flavor-name="Pistachio Petal"] .menu-card-image img');
+
+    if (pistachioImage) {
+      console.log("Pistachio Petal image loaded in menu DOM.", {
+        src: pistachioImage.src,
+        alt: pistachioImage.alt,
+      });
+    }
   };
 
   const renderFilterButtons = () => {
@@ -316,8 +387,9 @@ document.addEventListener("DOMContentLoaded", () => {
       button.setAttribute("aria-pressed", String(category === "All"));
 
       button.addEventListener("click", () => {
+        currentMenuCategory = category;
         updateActiveFilterButton(category);
-        renderMenuItems(category);
+        applyMenuFilters();
       });
 
       menuFilters.append(button);
@@ -326,6 +398,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderFilterButtons();
   renderMenuItems();
+
+  if (window.jQuery) {
+    const $ = window.jQuery;
+
+    $("#menu-search-input").on("keyup", function handleMenuSearch() {
+      // The search term is combined with the active category so typing narrows
+      // the already selected flavor group instead of replacing category filters.
+      currentMenuSearchTerm = $(this).val().trim().toLowerCase();
+      applyMenuFilters();
+    });
+  }
 
   const reservationFields = reservationForm
     ? Array.from(reservationForm.querySelectorAll("input"))

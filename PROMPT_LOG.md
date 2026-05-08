@@ -115,3 +115,109 @@ Added Jest test infrastructure and a jsdom-based unit test suite covering reserv
 
 ### Achieved
 Created a professional README with project overview, getting started instructions for opening `index.html`, optional test commands, a full feature list, tech stack, project file guide, and a summary of the playful ice cream shop vibe.
+
+## 2026-05-08 22:14 UTC
+
+### Prompt
+> How do I open the index.html on github?
+
+### Achieved
+Explained the difference between viewing `index.html` in the GitHub repository and publishing it as a live website with GitHub Pages.
+
+## 2026-05-08 22:21 UTC
+
+### Prompt
+> One thing to change on the site, add images of each of the ice cream flavors on the cards. Use realistic ice cream images to display.
+
+### Achieved
+Updated the dynamic menu data and rendering so each ice cream flavor card displays a realistic lazy-loaded photo with descriptive alt text instead of text-only image placeholders.
+
+## 2026-05-08 22:24 UTC
+
+### Prompt
+> Based on all our work today, generate a professional README.md. Include a 'Getting Started' section that explains how to open the index.html, a full feature list, and a summary of the project's 'vibe'
+
+### Achieved
+Refreshed the professional README so it reflects the full current site, including realistic flavor photos, GitHub Pages/local opening guidance, the complete feature list, and the updated project vibe summary.
+
+## 2026-05-08 22:26 UTC
+
+### Prompt
+> There are merge conflicts with the `main` branch. Review them and classify whether they are simple conflicts, or if there are conflicting intents or other complicating factors. Fix the simple conflicts, and report the complicated ones. Fetch the latest changes to the `main` branch from the origin before you begin.
+
+### Achieved
+Fetched the latest `main`, reviewed the merge conflicts, classified them as simple branch-vs-main drift with no conflicting product intent, and resolved them by keeping the newer site, test, README, prompt log, and feature tracker content from this branch.
+
+## 2026-05-08 22:30 UTC
+
+### Prompt
+> Add a live search feature using jQuery to the dynamic menu section. Add a search input above the menu grid as the user types, filter ice cream flavors in real time, use jQuery event listener for keyup, use jQuery selectors to filter DOM elements
+> search should match: flavor name, category, description, if no results are found, display a friendly message like “No flavors match your search 🍦”, ensure it works smoothly with the existing category filter (both filters should work together logically), add comments explaining the jQuery filtering logic
+
+### Achieved
+Added a jQuery-powered live menu search input that filters existing dynamic menu card DOM elements by flavor name, category, and description, combines logically with the active category filter, and shows a friendly no-results message when no flavors match.
+
+## 2026-05-08 22:34 UTC
+
+### Prompt
+> Write a unit test for the menu filtering feature. Test the JavaScript function that filters ice cream by category, ensure filtering returns only matching items, use a sample mock menu array inside the test, verify results using Jest assertions, ensure test is readable and commented. Save this in a tests/ folder
+
+### Achieved
+Exposed a pure menu category filtering helper and added a readable Jest unit test using a mock menu array to verify that filtering returns only items matching the selected category.
+
+## 2026-05-08 22:36 UTC
+
+### Prompt
+> I noticed that the pistachio ice cream image in the dynamic menu is incorrect or not displaying properly on Nina’s Ice Cream website. Identify where the pistachio flavor image is defined in the JavaScript menu data or HTML, replace it with the correct image placeholder or correct image URL, ensure the pistachio item displays consistently with other menu items, verify that no other flavor images are broken as a result of the fix, maintain responsive layout and styling consistency
+
+### Achieved
+Located the Pistachio Petal image in the JavaScript menu data, replaced the incorrect image URL with a green ice cream photo, updated the alt text, and added test coverage to confirm the pistachio card renders the corrected image.
+
+## 2026-05-08 22:39 UTC
+
+### Prompt
+> Now verify that the pistachio ice cream image fix works correctly. Confirm the correct image renders in the menu dynamically, ensure no broken image icons appear in the console or UI, test that the fix did not affect other menu items, check responsiveness on mobile and desktop layouts, add a simple debugging console log to confirm the pistachio item loads correctly in the DOM. If any issue remains, debug and resolve it before finalizing.
+
+### Achieved
+Added a debug console log confirming the Pistachio Petal image is present in the dynamic menu DOM, extended test coverage for that log and image data, and prepared automated checks for image URLs, menu rendering, and responsive CSS continuity.
+
+## 2026-05-08 22:42 UTC
+
+### Prompt
+> For the pistachio petal image, use this https://plus.unsplash.com/premium_photo-1694116056814-edddc837a61d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+### Achieved
+Updated the Pistachio Petal menu item to use the provided Unsplash image URL and adjusted the automated image assertion to verify the new source.
+
+## 2026-05-08 22:44 UTC
+
+### Prompt
+> Please align "Explore a rotating menu of small-batch scoops made with playful flavors and creamy textures." into the center of the screen using Flexbox
+
+### Achieved
+Centered the menu intro sentence with a scoped Flexbox rule so the text is horizontally centered within the menu section.
+
+## 2026-05-08 22:47 UTC
+
+### Prompt
+> Update the text directly below the Menu section in Nina’s Ice Cream website. We want to improve layout alignment and visual hierarchy. Apply Flexbox to the parent container of the menu description text. Ensure the text is horizontally centered. Ensure the text is also vertically centered if applicable within its container
+> Use display: flex, justify-content: center, and align-items: center appropriately
+
+### Achieved
+Wrapped the Menu description text in a parent `.menu-description` container and used Flexbox with `display: flex`, `justify-content: center`, and `align-items: center` to center the description horizontally and vertically within its container.
+
+## 2026-05-08 22:50 UTC
+
+### Prompt
+> Remove "Explore a rotating menu of small-batch scoops made with playful flavors and creamy textures." text right under the Menu
+
+### Achieved
+Removed the Menu description text block directly under the Menu heading and cleaned up the now-unused menu description Flexbox styles.
+
+## 2026-05-08 22:52 UTC
+
+### Prompt
+> Based on all our work today, generate a professional README.md. Include a 'Getting Started' section that explains how to open the index.html, a full feature list, and a summary of the project's 'vibe'.
+
+### Achieved
+Updated the professional README to reflect the current final site, including Getting Started guidance, live jQuery menu search, realistic flavor photos, full feature coverage, testing details, tech stack, file guide, and the current playful ice cream shop vibe.
