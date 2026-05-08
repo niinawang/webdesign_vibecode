@@ -7,3 +7,11 @@
 
 ### Achieved
 Created the initial project skeleton for Nina’s Ice Cream, including empty website files and a tracked tests directory placeholder for future work.
+
+## 2026-05-08 21:33 UTC
+
+### Prompt
+> Before we code the next part, create a FEATURES.md file. Every time we finish a component, update that file with a checkmark and a brief description of how it works.
+
+### Achieved
+Added a feature-tracking document that will record completed website components with checkmarks and brief behavior descriptions as the site is built.
