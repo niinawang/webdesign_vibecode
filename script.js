@@ -245,6 +245,19 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener("click", scrollBackToTop);
   }
 
+  const filterMenuItemsByCategory = (items, category) => {
+    if (category === "All") {
+      return items;
+    }
+
+    return items.filter((item) => item.category === category);
+  };
+
+  window.NinasIceCream = {
+    ...(window.NinasIceCream || {}),
+    filterMenuItemsByCategory,
+  };
+
   const updateActiveFilterButton = (selectedCategory) => {
     if (!menuFilters) {
       return;

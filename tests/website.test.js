@@ -169,4 +169,24 @@ describe("Nina's Ice Cream website interactions", () => {
     expect(noResultsMessage.hidden).toBe(false);
     expect(noResultsMessage.textContent).toBe("No flavors match your search 🍦");
   });
+
+  test("category filter helper returns only matching mock menu items", () => {
+    const mockMenuItems = [
+      { flavorName: "Vanilla Bean", category: "Classic" },
+      { flavorName: "Strawberry Swirl", category: "Fruit" },
+      { flavorName: "Blueberry Cloud", category: "Fruit" },
+      { flavorName: "Chocolate Fudge", category: "Chocolate" },
+    ];
+
+    // The helper should keep only items whose category matches the selected
+    // filter, which mirrors the menu category behavior used by the live UI.
+    const fruitResults = window.NinasIceCream.filterMenuItemsByCategory(mockMenuItems, "Fruit");
+
+    expect(fruitResults).toHaveLength(2);
+    expect(fruitResults).toEqual([
+      { flavorName: "Strawberry Swirl", category: "Fruit" },
+      { flavorName: "Blueberry Cloud", category: "Fruit" },
+    ]);
+    expect(fruitResults.every((item) => item.category === "Fruit")).toBe(true);
+  });
 });

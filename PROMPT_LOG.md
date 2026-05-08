@@ -156,3 +156,11 @@ Fetched the latest `main`, reviewed the merge conflicts, classified them as simp
 
 ### Achieved
 Added a jQuery-powered live menu search input that filters existing dynamic menu card DOM elements by flavor name, category, and description, combines logically with the active category filter, and shows a friendly no-results message when no flavors match.
+
+## 2026-05-08 22:34 UTC
+
+### Prompt
+> Write a unit test for the menu filtering feature. Test the JavaScript function that filters ice cream by category, ensure filtering returns only matching items, use a sample mock menu array inside the test, verify results using Jest assertions, ensure test is readable and commented. Save this in a tests/ folder
+
+### Achieved
+Exposed a pure menu category filtering helper and added a readable Jest unit test using a mock menu array to verify that filtering returns only items matching the selected category.
