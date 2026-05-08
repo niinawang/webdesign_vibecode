@@ -188,3 +188,11 @@ Added a debug console log confirming the Pistachio Petal image is present in the
 
 ### Achieved
 Updated the Pistachio Petal menu item to use the provided Unsplash image URL and adjusted the automated image assertion to verify the new source.
+
+## 2026-05-08 22:44 UTC
+
+### Prompt
+> Please align "Explore a rotating menu of small-batch scoops made with playful flavors and creamy textures." into the center of the screen using Flexbox
+
+### Achieved
+Centered the menu intro sentence with a scoped Flexbox rule so the text is horizontally centered within the menu section.
