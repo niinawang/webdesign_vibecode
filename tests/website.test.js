@@ -152,6 +152,12 @@ describe("Nina's Ice Cream website interactions", () => {
 
     expect(pistachioImage.src).toContain("photo-1554630981-a73ffb5ed6f8");
     expect(pistachioImage.alt).toBe("Pale green pistachio ice cream in a cone.");
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "Pistachio Petal image loaded in menu DOM.",
+      expect.objectContaining({
+        alt: "Pale green pistachio ice cream in a cone.",
+      }),
+    );
   });
 
   test("jQuery search works with category filtering and no-results messaging", () => {

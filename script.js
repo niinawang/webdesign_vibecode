@@ -361,6 +361,16 @@ document.addEventListener("DOMContentLoaded", () => {
     menuGrid.replaceChildren(menuFragment);
     observeScrollAnimations(menuGrid.querySelectorAll(".reveal-on-scroll"));
     applyMenuFilters();
+
+    const pistachioImage = menuGrid
+      .querySelector('[data-flavor-name="Pistachio Petal"] .menu-card-image img');
+
+    if (pistachioImage) {
+      console.log("Pistachio Petal image loaded in menu DOM.", {
+        src: pistachioImage.src,
+        alt: pistachioImage.alt,
+      });
+    }
   };
 
   const renderFilterButtons = () => {
