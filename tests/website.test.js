@@ -136,5 +136,6 @@ describe("Nina's Ice Cream website interactions", () => {
 
   test("dynamic rendering creates the correct number of menu cards", () => {
     expect(document.querySelectorAll(".menu-card")).toHaveLength(8);
+    expect(document.querySelectorAll(".menu-card-image img")).toHaveLength(8);
   });
 });

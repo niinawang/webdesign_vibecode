@@ -123,3 +123,11 @@ Created a professional README with project overview, getting started instruction
 
 ### Achieved
 Explained the difference between viewing `index.html` in the GitHub repository and publishing it as a live website with GitHub Pages.
+
+## 2026-05-08 22:21 UTC
+
+### Prompt
+> One thing to change on the site, add images of each of the ice cream flavors on the cards. Use realistic ice cream images to display.
+
+### Achieved
+Updated the dynamic menu data and rendering so each ice cream flavor card displays a realistic lazy-loaded photo with descriptive alt text instead of text-only image placeholders.

@@ -24,3 +24,4 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Back-to-top button: Shows a floating button after the visitor scrolls down, then uses modular JavaScript and smooth scrolling to return to the top with responsive positioning and hover animation.
 - [x] Jest interaction tests: Adds a jsdom test suite for invalid email validation, menu filtering results, dark mode localStorage updates, back-to-top scroll visibility, and dynamic menu card rendering counts.
 - [x] Professional README: Documents the project overview, getting started steps, feature list, tech stack, file structure, tests, and playful ice cream shop vibe.
+- [x] Realistic menu images: Displays lazy-loaded realistic ice cream photos on every dynamic flavor card with descriptive alt text and subtle image hover scaling.

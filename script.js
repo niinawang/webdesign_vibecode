@@ -19,56 +19,64 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "Classic",
       description: "Creamy vanilla bean ice cream with fragrant specks in every scoop.",
       price: "$4.50",
-      imagePlaceholder: "VB",
+      imageUrl: "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Scoops of creamy vanilla ice cream in a bowl.",
     },
     {
       flavorName: "Strawberry Dream",
       category: "Fruit",
       description: "Sweet strawberry ice cream with ribbons of berry jam.",
       price: "$4.75",
-      imagePlaceholder: "ST",
+      imageUrl: "https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Pink strawberry ice cream scoops in a cone.",
     },
     {
       flavorName: "Chocolate Velvet",
       category: "Chocolate",
       description: "Deep cocoa ice cream with a silky, truffle-like finish.",
       price: "$4.95",
-      imagePlaceholder: "CV",
+      imageUrl: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Rich chocolate ice cream scoops with toppings.",
     },
     {
       flavorName: "Caramel Waffle Crunch",
       category: "Seasonal",
       description: "Buttery caramel ice cream folded with waffle cone pieces.",
       price: "$5.50",
-      imagePlaceholder: "CW",
+      imageUrl: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Ice cream cone with caramel-colored scoops.",
     },
     {
       flavorName: "Cookie Confetti",
       category: "Classic",
       description: "Cake batter ice cream with cookie crumbles and rainbow sprinkles.",
       price: "$5.50",
-      imagePlaceholder: "CC",
+      imageUrl: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Colorful ice cream scoops with sprinkles.",
     },
     {
       flavorName: "Blueberry Cloud",
       category: "Fruit",
       description: "Light blueberry ice cream swirled with fluffy marshmallow cream.",
       price: "$5.25",
-      imagePlaceholder: "BC",
+      imageUrl: "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Berry ice cream scoops served in a bowl.",
     },
     {
       flavorName: "Mint Chip Meadow",
       category: "Chocolate",
       description: "Cool mint ice cream dotted with crisp chocolate chips.",
       price: "$4.95",
-      imagePlaceholder: "MC",
+      imageUrl: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Mint-colored ice cream scoops with chocolate pieces.",
     },
     {
       flavorName: "Pistachio Petal",
       category: "Seasonal",
       description: "Roasted pistachio ice cream with a soft floral finish.",
       price: "$5.25",
-      imagePlaceholder: "PP",
+      imageUrl: "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=900&q=80",
+      imageAlt: "Pale green pistachio ice cream scoops.",
     },
   ];
 
@@ -262,8 +270,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const image = document.createElement("div");
     image.className = "menu-card-image";
-    image.setAttribute("aria-hidden", "true");
-    image.textContent = item.imagePlaceholder;
+    const flavorImage = document.createElement("img");
+    flavorImage.src = item.imageUrl;
+    flavorImage.alt = item.imageAlt;
+    flavorImage.loading = "lazy";
+
+    image.append(flavorImage);
 
     const content = document.createElement("div");
     content.className = "menu-card-content";
