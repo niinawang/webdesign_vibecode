@@ -150,7 +150,7 @@ describe("Nina's Ice Cream website interactions", () => {
       .find((card) => card.querySelector("h3").textContent === "Pistachio Petal");
     const pistachioImage = pistachioCard.querySelector(".menu-card-image img");
 
-    expect(pistachioImage.src).toContain("photo-1554630981-a73ffb5ed6f8");
+    expect(pistachioImage.src).toContain("premium_photo-1694116056814-edddc837a61d");
     expect(pistachioImage.alt).toBe("Pale green pistachio ice cream in a cone.");
     expect(consoleSpy).toHaveBeenCalledWith(
       "Pistachio Petal image loaded in menu DOM.",

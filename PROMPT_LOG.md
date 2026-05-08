@@ -180,3 +180,11 @@ Located the Pistachio Petal image in the JavaScript menu data, replaced the inco
 
 ### Achieved
 Added a debug console log confirming the Pistachio Petal image is present in the dynamic menu DOM, extended test coverage for that log and image data, and prepared automated checks for image URLs, menu rendering, and responsive CSS continuity.
+
+## 2026-05-08 22:42 UTC
+
+### Prompt
+> For the pistachio petal image, use this https://plus.unsplash.com/premium_photo-1694116056814-edddc837a61d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+### Achieved
+Updated the Pistachio Petal menu item to use the provided Unsplash image URL and adjusted the automated image assertion to verify the new source.
