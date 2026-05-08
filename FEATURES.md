@@ -31,3 +31,4 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Pistachio image correction: Updates the dynamic Pistachio Petal menu card to use a consistent green ice cream photo with matching alt text and test coverage.
 - [x] Pistachio image verification: Logs when the corrected Pistachio Petal image is rendered in the dynamic menu DOM and verifies the image remains covered by automated tests.
 - [x] Menu description Flexbox alignment: Centers the Menu description text through a dedicated parent Flexbox container for clearer layout hierarchy.
+- [x] Menu description removal: Removes the introductory Menu description text so the search controls appear directly beneath the Menu heading.

@@ -205,3 +205,11 @@ Centered the menu intro sentence with a scoped Flexbox rule so the text is horiz
 
 ### Achieved
 Wrapped the Menu description text in a parent `.menu-description` container and used Flexbox with `display: flex`, `justify-content: center`, and `align-items: center` to center the description horizontally and vertically within its container.
+
+## 2026-05-08 22:50 UTC
+
+### Prompt
+> Remove "Explore a rotating menu of small-batch scoops made with playful flavors and creamy textures." text right under the Menu
+
+### Achieved
+Removed the Menu description text block directly under the Menu heading and cleaned up the now-unused menu description Flexbox styles.

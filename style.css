@@ -372,19 +372,6 @@ footer p {
   font-size: 1.08rem;
 }
 
-.menu-description {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-#menu .section-intro {
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
 .menu-search {
   display: flex;
   flex-direction: column;
