@@ -725,6 +725,45 @@ footer address {
   font-style: normal;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0.8rem 1rem;
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 800;
+  background: var(--color-pink-deep);
+  border: 2px solid rgba(255, 255, 255, 0.74);
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 18px 36px rgba(233, 120, 156, 0.28);
+  transform: translateY(1rem) scale(0.96);
+  transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--color-blue-deep);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-0.25rem) scale(1.04);
+}
+
 html[data-theme="dark"] .site-header {
   background: rgba(25, 17, 35, 0.9);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
@@ -816,6 +855,11 @@ html[data-theme="dark"] footer {
   background: #120b18;
 }
 
+html[data-theme="dark"] .back-to-top {
+  color: #20152a;
+  border-color: rgba(255, 159, 189, 0.42);
+}
+
 body,
 .site-header,
 .site-navigation > a,
@@ -833,6 +877,7 @@ body,
 .menu-card-category,
 .testimonial-card,
 .form-field input,
+.back-to-top,
 footer {
   transition:
     opacity 520ms ease,
@@ -957,6 +1002,14 @@ footer {
 
   .testimonial-dots {
     order: -1;
+  }
+
+  .back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding: 0.75rem 0.9rem;
   }
 
   #featured-flavors article,

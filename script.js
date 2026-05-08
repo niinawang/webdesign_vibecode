@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const testimonialTrack = document.querySelector("#testimonial-track");
   const testimonialDots = document.querySelector("#testimonial-dots");
   const testimonialButtons = document.querySelectorAll("[data-carousel-direction]");
+  const backToTopButton = document.querySelector(".back-to-top");
   const mobileBreakpoint = window.matchMedia("(max-width: 768px)");
 
   const menuItems = [
@@ -110,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let testimonialIntervalId;
   const themeStorageKey = "ninas-ice-cream-theme";
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const backToTopOffset = 420;
   let scrollAnimationObserver;
 
   const getStoredTheme = () => {
@@ -204,6 +206,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     animatedElements.forEach((element) => scrollAnimationObserver.observe(element));
   };
+
+  const setBackToTopVisibility = (isVisible) => {
+    if (!backToTopButton) {
+      return;
+    }
+
+    backToTopButton.classList.toggle("is-visible", isVisible);
+    backToTopButton.setAttribute("aria-hidden", String(!isVisible));
+    backToTopButton.tabIndex = isVisible ? 0 : -1;
+  };
+
+  const updateBackToTopVisibility = () => {
+    setBackToTopVisibility(window.scrollY > backToTopOffset);
+  };
+
+  const scrollBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+    });
+  };
+
+  if (backToTopButton) {
+    updateBackToTopVisibility();
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    backToTopButton.addEventListener("click", scrollBackToTop);
+  }
 
   const getFilteredMenuItems = (category) => {
     // The "All" filter shows the complete array; category buttons use Array.filter()

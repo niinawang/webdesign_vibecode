@@ -90,3 +90,12 @@ Added a navigation dark mode toggle with CSS variable-based theme switching, rea
 
 ### Achieved
 Added one-time scroll-triggered fade-in and slide-up animations using Intersection Observer for menu cards, testimonials, and reservation sections, with reduced-motion handling and comments explaining the observer behavior.
+
+## 2026-05-08 22:05 UTC
+
+### Prompt
+> Create a floating back-to-top button. Have button only appears after scrolling down
+> smooth scrolling back to top, hover animations, responsive positioning, modular JavaScript functions, scroll event listener
+
+### Achieved
+Added a floating back-to-top button that appears after scrolling down, smoothly returns visitors to the top, uses modular JavaScript helper functions with a scroll listener, and includes responsive positioning plus hover animations.
