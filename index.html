@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nina's Ice Cream serves small-batch scoops, sundaes, and seasonal flavors in a bright neighborhood shop."
+    />
+    <title>Nina's Ice Cream | Small-Batch Scoops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Nina's Ice Cream home">
+          <span class="brand__mark">N</span>
+          <span>Nina's Ice Cream</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav__links" id="nav-links">
+          <a href="#flavors">Flavors</a>
+          <a href="#visit">Visit</a>
+          <a href="#story">Story</a>
+          <a class="button button--small" href="#order">Order a Pint</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero__content">
+          <p class="eyebrow">Small-batch scoops, big sunny energy</p>
+          <h1>Handcrafted ice cream made for sweet neighborhood moments.</h1>
+          <p class="hero__text">
+            Nina's Ice Cream blends nostalgic classics with fresh seasonal ingredients for
+            cones, sundaes, shakes, and take-home pints.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#flavors">Explore flavors</a>
+            <a class="button button--ghost" href="#visit">Plan a visit</a>
+          </div>
+        </div>
+        <div class="hero__card" aria-label="Featured sundae">
+          <div class="scoop scoop--berry"></div>
+          <div class="scoop scoop--vanilla"></div>
+          <div class="scoop scoop--mint"></div>
+          <div class="cone"></div>
+        </div>
+      </section>
+
+      <section class="section section--cream" id="flavors">
+        <div class="section__heading">
+          <p class="eyebrow">Today's favorites</p>
+          <h2>Scoops worth slowing down for</h2>
+        </div>
+        <div class="flavor-grid">
+          <article class="flavor-card">
+            <span class="flavor-card__icon">S</span>
+            <h3>Strawberry Cloud</h3>
+            <p>Roasted strawberries, vanilla cream, and ribboned berry jam.</p>
+          </article>
+          <article class="flavor-card">
+            <span class="flavor-card__icon">P</span>
+            <h3>Pistachio Honey</h3>
+            <p>Toasted pistachios, wildflower honey, and a pinch of sea salt.</p>
+          </article>
+          <article class="flavor-card">
+            <span class="flavor-card__icon">C</span>
+            <h3>Midnight Chocolate</h3>
+            <p>Dark cocoa ice cream with brownie crumble and fudge swirls.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split" id="visit">
+        <div>
+          <p class="eyebrow">Come by soon</p>
+          <h2>Your happy-place scoop shop</h2>
+          <p>
+            Pull up a chair, grab a waffle cone, and stay awhile. We are building a warm,
+            modern web home for Nina's one delicious feature at a time.
+          </p>
+        </div>
+        <div class="visit-card">
+          <h3>Shop Hours</h3>
+          <dl>
+            <div>
+              <dt>Mon-Thu</dt>
+              <dd>12 PM - 9 PM</dd>
+            </div>
+            <div>
+              <dt>Fri-Sun</dt>
+              <dd>11 AM - 10 PM</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section section--pink" id="story">
+        <div class="section__heading">
+          <p class="eyebrow">Our story</p>
+          <h2>Built around joy, craft, and community.</h2>
+          <p>
+            Nina's Ice Cream celebrates fresh ingredients, playful flavor ideas, and a
+            welcoming shop experience for every guest.
+          </p>
+        </div>
+      </section>
+
+      <section class="section cta" id="order">
+        <p class="eyebrow">Next scoop</p>
+        <h2>Ready for a pint?</h2>
+        <p>Online ordering is coming soon as this site grows.</p>
+        <a class="button" href="mailto:hello@ninasicecream.example">Contact the shop</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Nina's Ice Cream. Made fresh daily.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
