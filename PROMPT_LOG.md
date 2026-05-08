@@ -213,3 +213,11 @@ Wrapped the Menu description text in a parent `.menu-description` container and 
 
 ### Achieved
 Removed the Menu description text block directly under the Menu heading and cleaned up the now-unused menu description Flexbox styles.
+
+## 2026-05-08 22:52 UTC
+
+### Prompt
+> Based on all our work today, generate a professional README.md. Include a 'Getting Started' section that explains how to open the index.html, a full feature list, and a summary of the project's 'vibe'.
+
+### Achieved
+Updated the professional README to reflect the current final site, including Getting Started guidance, live jQuery menu search, realistic flavor photos, full feature coverage, testing details, tech stack, file guide, and the current playful ice cream shop vibe.

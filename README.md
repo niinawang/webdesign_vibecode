@@ -1,8 +1,8 @@
 # Nina's Ice Cream Website
 
-A playful, modern ice cream shop website built with semantic HTML, responsive CSS, vanilla JavaScript, and Jest interaction tests.
+A playful, modern ice cream shop website built with semantic HTML, responsive CSS, vanilla JavaScript, jQuery-enhanced menu search, and Jest interaction tests.
 
-Nina's Ice Cream is a polished static storefront experience where visitors can explore featured flavors, browse a dynamic photo-rich menu, filter by category, submit a reservation request, read customer testimonials, switch between light and dark themes, and navigate comfortably across desktop and mobile screens.
+Nina's Ice Cream is a polished static storefront experience where visitors can explore featured flavors, browse a dynamic photo-rich menu, search and filter by category, submit a reservation request, read customer testimonials, switch between light and dark themes, and navigate comfortably across desktop and mobile screens.
 
 ## Getting Started
 
@@ -41,6 +41,8 @@ npm test
 - **Dynamic menu rendering**: Stores menu items in a JavaScript array and renders flavor cards into the page with DOM manipulation.
 - **Realistic flavor photos**: Displays lazy-loaded ice cream images on every menu card with descriptive alt text and subtle hover zoom.
 - **Menu category filtering**: Generates filter buttons dynamically and uses JavaScript array filtering to show categories such as Classic, Fruit, Chocolate, and Seasonal.
+- **Live menu search**: Uses jQuery `keyup` handling and selectors to filter menu cards by flavor name, category, and description in real time.
+- **Combined menu filtering**: Search and category filters work together, with a friendly no-results message when no flavors match.
 - **Reservation form**: Collects name, email, phone number, reservation date, time, and party size.
 - **Form validation**: Shows inline error messages below invalid fields and displays a successful confirmation without refreshing the page.
 - **Testimonials carousel**: Renders six customer testimonials with previous/next controls, dot indicators, automatic sliding, and smooth transitions.
@@ -48,7 +50,7 @@ npm test
 - **Scroll-triggered animations**: Uses the Intersection Observer API to reveal menu cards, testimonials, and reservation content with one-time fade-in and slide-up animations.
 - **Back-to-top button**: Appears after scrolling down and smoothly returns visitors to the top of the page.
 - **Responsive design**: Adapts layouts, navigation, filters, cards, forms, carousel controls, and floating controls for screens below 768px.
-- **Interaction tests**: Includes Jest and jsdom tests for validation, filtering, theme persistence, scroll visibility, and dynamic rendering.
+- **Interaction tests**: Includes Jest and jsdom tests for validation, filtering, jQuery search, pistachio image rendering, theme persistence, scroll visibility, and dynamic rendering.
 
 ## Project Vibe
 
@@ -68,6 +70,7 @@ The overall vibe is:
 - HTML5
 - CSS3
 - Vanilla JavaScript
+- jQuery
 - Jest
 - jsdom
 
@@ -75,7 +78,7 @@ The overall vibe is:
 
 - `index.html` - Main website structure.
 - `style.css` - Visual styling, responsive layout, animations, and theme support.
-- `script.js` - Dynamic rendering, navigation behavior, form validation, carousel, dark mode, scroll animations, and back-to-top logic.
+- `script.js` - Dynamic rendering, menu filtering/search, navigation behavior, form validation, carousel, dark mode, scroll animations, and back-to-top logic.
 - `tests/website.test.js` - Jest tests for key interactions.
 - `PROMPT_LOG.md` - Running log of prompts and completed work.
 - `FEATURES.md` - Checklist of completed website components.
