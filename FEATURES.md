@@ -30,3 +30,4 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Menu filter unit test: Adds a readable Jest unit test with a mock menu array to verify the category filtering helper returns only matching ice cream items.
 - [x] Pistachio image correction: Updates the dynamic Pistachio Petal menu card to use a consistent green ice cream photo with matching alt text and test coverage.
 - [x] Pistachio image verification: Logs when the corrected Pistachio Petal image is rendered in the dynamic menu DOM and verifies the image remains covered by automated tests.
+- [x] Menu description Flexbox alignment: Centers the Menu description text through a dedicated parent Flexbox container for clearer layout hierarchy.

@@ -196,3 +196,12 @@ Updated the Pistachio Petal menu item to use the provided Unsplash image URL and
 
 ### Achieved
 Centered the menu intro sentence with a scoped Flexbox rule so the text is horizontally centered within the menu section.
+
+## 2026-05-08 22:47 UTC
+
+### Prompt
+> Update the text directly below the Menu section in Nina’s Ice Cream website. We want to improve layout alignment and visual hierarchy. Apply Flexbox to the parent container of the menu description text. Ensure the text is horizontally centered. Ensure the text is also vertically centered if applicable within its container
+> Use display: flex, justify-content: center, and align-items: center appropriately
+
+### Achieved
+Wrapped the Menu description text in a parent `.menu-description` container and used Flexbox with `display: flex`, `justify-content: center`, and `align-items: center` to center the description horizontally and vertically within its container.
