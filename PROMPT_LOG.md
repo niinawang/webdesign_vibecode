@@ -139,3 +139,11 @@ Updated the dynamic menu data and rendering so each ice cream flavor card displa
 
 ### Achieved
 Refreshed the professional README so it reflects the full current site, including realistic flavor photos, GitHub Pages/local opening guidance, the complete feature list, and the updated project vibe summary.
+
+## 2026-05-08 22:26 UTC
+
+### Prompt
+> There are merge conflicts with the `main` branch. Review them and classify whether they are simple conflicts, or if there are conflicting intents or other complicating factors. Fix the simple conflicts, and report the complicated ones. Fetch the latest changes to the `main` branch from the origin before you begin.
+
+### Achieved
+Fetched the latest `main`, reviewed the merge conflicts, classified them as simple branch-vs-main drift with no conflicting product intent, and resolved them by keeping the newer site, test, README, prompt log, and feature tracker content from this branch.
