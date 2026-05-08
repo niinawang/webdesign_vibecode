@@ -1,5 +1,5 @@
 const fs = require("fs");
-const jqueryFactory = require("jquery");
+const jquery = require("jquery");
 const path = require("path");
 
 const html = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
@@ -29,8 +29,8 @@ const loadWebsite = () => {
   }));
 
   window.scrollTo = jest.fn(({ top }) => setScrollY(top));
-  window.jQuery = jqueryFactory(window);
-  window.$ = window.jQuery;
+  window.jQuery = jquery;
+  window.$ = jquery;
 
   class MockIntersectionObserver {
     observe() {}
