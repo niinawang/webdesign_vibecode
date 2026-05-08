@@ -22,3 +22,4 @@ Track completed website components here. Add a checkmark and a brief description
 - [x] Dark mode: Adds a navigation toggle that switches between light and dark themes, updates readable section colors with CSS variables and dark overrides, smoothly transitions theme changes, and stores the visitor's preference in localStorage.
 - [x] Scroll-triggered animations: Uses Intersection Observer to fade and slide menu cards, testimonial content, and reservation sections into view once, with reduced-motion support for smoother mobile-friendly performance.
 - [x] Back-to-top button: Shows a floating button after the visitor scrolls down, then uses modular JavaScript and smooth scrolling to return to the top with responsive positioning and hover animation.
+- [x] Jest interaction tests: Adds a jsdom test suite for invalid email validation, menu filtering results, dark mode localStorage updates, back-to-top scroll visibility, and dynamic menu card rendering counts.

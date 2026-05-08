@@ -99,3 +99,11 @@ Added one-time scroll-triggered fade-in and slide-up animations using Intersecti
 
 ### Achieved
 Added a floating back-to-top button that appears after scrolling down, smoothly returns visitors to the top, uses modular JavaScript helper functions with a scroll listener, and includes responsive positioning plus hover animations.
+
+## 2026-05-08 22:07 UTC
+
+### Prompt
+> We just finished the reservation form validation, menu filtering logic, dark mode toggle, and dynamic rendering features. Now, write a suite of unit tests using Jest to ensure that: invalid emails trigger validation errors, category filters return the correct menu items, dark mode correctly updates localStorage, back-to-top button visibility changes on scroll, dynamic rendering functions create the correct number of menu cards. Then save all tests in a tests/ folder. Again, make sure to update PROMPT_LOG.md and update FEATURES.md
+
+### Achieved
+Added Jest test infrastructure and a jsdom-based unit test suite covering reservation email validation, menu category filtering, dark mode localStorage persistence, back-to-top scroll visibility, and dynamic menu card rendering.
