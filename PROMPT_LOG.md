@@ -147,3 +147,12 @@ Refreshed the professional README so it reflects the full current site, includin
 
 ### Achieved
 Fetched the latest `main`, reviewed the merge conflicts, classified them as simple branch-vs-main drift with no conflicting product intent, and resolved them by keeping the newer site, test, README, prompt log, and feature tracker content from this branch.
+
+## 2026-05-08 22:30 UTC
+
+### Prompt
+> Add a live search feature using jQuery to the dynamic menu section. Add a search input above the menu grid as the user types, filter ice cream flavors in real time, use jQuery event listener for keyup, use jQuery selectors to filter DOM elements
+> search should match: flavor name, category, description, if no results are found, display a friendly message like “No flavors match your search 🍦”, ensure it works smoothly with the existing category filter (both filters should work together logically), add comments explaining the jQuery filtering logic
+
+### Achieved
+Added a jQuery-powered live menu search input that filters existing dynamic menu card DOM elements by flavor name, category, and description, combines logically with the active category filter, and shows a friendly no-results message when no flavors match.

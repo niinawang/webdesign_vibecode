@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
   const menuFilters = document.querySelector("#menu-filters");
   const menuGrid = document.querySelector("#menu-grid");
+  const menuNoResults = document.querySelector("#menu-no-results");
   const reservationForm = document.querySelector("#reservation-form");
   const reservationConfirmation = document.querySelector("#reservation-confirmation");
   const testimonialTrack = document.querySelector("#testimonial-track");
@@ -120,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeStorageKey = "ninas-ice-cream-theme";
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const backToTopOffset = 420;
+  let currentMenuCategory = "All";
+  let currentMenuSearchTerm = "";
   let scrollAnimationObserver;
 
   const getStoredTheme = () => {
@@ -242,16 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener("click", scrollBackToTop);
   }
 
-  const getFilteredMenuItems = (category) => {
-    // The "All" filter shows the complete array; category buttons use Array.filter()
-    // to return only the matching flavor cards without reloading the page.
-    if (category === "All") {
-      return menuItems;
-    }
-
-    return menuItems.filter((item) => item.category === category);
-  };
-
   const updateActiveFilterButton = (selectedCategory) => {
     if (!menuFilters) {
       return;
@@ -267,6 +260,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const createMenuCard = (item) => {
     const card = document.createElement("article");
     card.className = "menu-card reveal-on-scroll";
+    card.dataset.flavorName = item.flavorName;
+    card.dataset.category = item.category;
+    card.dataset.description = item.description;
 
     const image = document.createElement("div");
     image.className = "menu-card-image";
@@ -301,17 +297,57 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   };
 
-  const renderMenuItems = (category = "All") => {
+  const updateMenuNoResultsMessage = (visibleCount) => {
+    if (!menuNoResults) {
+      return;
+    }
+
+    menuNoResults.hidden = visibleCount > 0;
+  };
+
+  const applyMenuFilters = () => {
+    if (!window.jQuery || !menuGrid) {
+      return;
+    }
+
+    const $ = window.jQuery;
+    let visibleCount = 0;
+
+    // jQuery handles the live DOM filtering: every card is checked against the
+    // active category button and the current search term, then hidden or shown.
+    $(".menu-card").each(function filterCard() {
+      const $card = $(this);
+      const cardCategory = $card.data("category");
+      const searchableText = [
+        $card.data("flavorName"),
+        cardCategory,
+        $card.data("description"),
+      ].join(" ").toLowerCase();
+      const matchesCategory = currentMenuCategory === "All" || cardCategory === currentMenuCategory;
+      const matchesSearch = !currentMenuSearchTerm || searchableText.includes(currentMenuSearchTerm);
+      const isVisible = matchesCategory && matchesSearch;
+
+      $card.toggleClass("is-hidden", !isVisible);
+
+      if (isVisible) {
+        visibleCount += 1;
+      }
+    });
+
+    updateMenuNoResultsMessage(visibleCount);
+  };
+
+  const renderMenuItems = () => {
     if (!menuGrid) {
       return;
     }
 
     const menuFragment = document.createDocumentFragment();
-    const filteredItems = getFilteredMenuItems(category);
 
-    filteredItems.forEach((item) => menuFragment.append(createMenuCard(item)));
+    menuItems.forEach((item) => menuFragment.append(createMenuCard(item)));
     menuGrid.replaceChildren(menuFragment);
     observeScrollAnimations(menuGrid.querySelectorAll(".reveal-on-scroll"));
+    applyMenuFilters();
   };
 
   const renderFilterButtons = () => {
@@ -328,8 +364,9 @@ document.addEventListener("DOMContentLoaded", () => {
       button.setAttribute("aria-pressed", String(category === "All"));
 
       button.addEventListener("click", () => {
+        currentMenuCategory = category;
         updateActiveFilterButton(category);
-        renderMenuItems(category);
+        applyMenuFilters();
       });
 
       menuFilters.append(button);
@@ -338,6 +375,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderFilterButtons();
   renderMenuItems();
+
+  if (window.jQuery) {
+    const $ = window.jQuery;
+
+    $("#menu-search-input").on("keyup", function handleMenuSearch() {
+      // The search term is combined with the active category so typing narrows
+      // the already selected flavor group instead of replacing category filters.
+      currentMenuSearchTerm = $(this).val().trim().toLowerCase();
+      applyMenuFilters();
+    });
+  }
 
   const reservationFields = reservationForm
     ? Array.from(reservationForm.querySelectorAll("input"))

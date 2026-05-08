@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
   <script src="script.js" defer></script>
   <title>Nina's Ice Cream</title>
 </head>
@@ -56,7 +57,12 @@
     <section id="menu" aria-labelledby="menu-heading">
       <h2 id="menu-heading">Menu</h2>
       <p class="section-intro">Explore a rotating menu of small-batch scoops made with playful flavors and creamy textures.</p>
+      <div class="menu-search">
+        <label for="menu-search-input">Search flavors</label>
+        <input type="search" id="menu-search-input" placeholder="Search by flavor, category, or description" autocomplete="off">
+      </div>
       <div id="menu-filters" class="menu-filters" role="group" aria-label="Filter ice cream menu by category"></div>
+      <p id="menu-no-results" class="menu-empty-message" aria-live="polite" hidden>No flavors match your search 🍦</p>
       <div id="menu-grid" class="menu-grid" aria-label="Ice cream menu items" aria-live="polite"></div>
     </section>
 

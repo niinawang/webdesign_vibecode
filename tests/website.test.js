@@ -1,4 +1,5 @@
 const fs = require("fs");
+const jqueryFactory = require("jquery");
 const path = require("path");
 
 const html = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf8");
@@ -28,6 +29,8 @@ const loadWebsite = () => {
   }));
 
   window.scrollTo = jest.fn(({ top }) => setScrollY(top));
+  window.jQuery = jqueryFactory(window);
+  window.$ = window.jQuery;
 
   class MockIntersectionObserver {
     observe() {}
@@ -51,6 +54,9 @@ const fillValidReservationFields = () => {
   document.querySelector("#reservation-time").value = "18:30";
   document.querySelector("#reservation-party-size").value = "4";
 };
+
+const getVisibleMenuCards = () => Array.from(document.querySelectorAll(".menu-card"))
+  .filter((card) => !card.classList.contains("is-hidden"));
 
 describe("Nina's Ice Cream website interactions", () => {
   let consoleSpy;
@@ -88,7 +94,7 @@ describe("Nina's Ice Cream website interactions", () => {
 
     chocolateButton.click();
 
-    const visibleCards = Array.from(document.querySelectorAll(".menu-card"));
+    const visibleCards = getVisibleMenuCards();
     const visibleCategories = visibleCards.map((card) => card.querySelector(".menu-card-category").textContent);
     const visibleTitles = visibleCards.map((card) => card.querySelector("h3").textContent);
 
@@ -137,5 +143,30 @@ describe("Nina's Ice Cream website interactions", () => {
   test("dynamic rendering creates the correct number of menu cards", () => {
     expect(document.querySelectorAll(".menu-card")).toHaveLength(8);
     expect(document.querySelectorAll(".menu-card-image img")).toHaveLength(8);
+  });
+
+  test("jQuery search works with category filtering and no-results messaging", () => {
+    const fruitButton = Array.from(document.querySelectorAll(".filter-button"))
+      .find((button) => button.textContent === "Fruit");
+    const searchInput = document.querySelector("#menu-search-input");
+    const noResultsMessage = document.querySelector("#menu-no-results");
+
+    fruitButton.click();
+    searchInput.value = "blueberry";
+    window.$(searchInput).trigger("keyup");
+
+    let visibleCards = getVisibleMenuCards();
+
+    expect(visibleCards).toHaveLength(1);
+    expect(visibleCards[0].querySelector("h3").textContent).toBe("Blueberry Cloud");
+    expect(noResultsMessage.hidden).toBe(true);
+
+    searchInput.value = "pistachio";
+    window.$(searchInput).trigger("keyup");
+    visibleCards = getVisibleMenuCards();
+
+    expect(visibleCards).toHaveLength(0);
+    expect(noResultsMessage.hidden).toBe(false);
+    expect(noResultsMessage.textContent).toBe("No flavors match your search 🍦");
   });
 });
